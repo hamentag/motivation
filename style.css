@@ -4,19 +4,46 @@
 *{
   box-sizing: border-box;
 }
+html{
+  background-color: white;
+}
+html.dark{
+  background-color: black;
+}
+
 body{
   display: flex;
   justify-content: center;
   padding: 10px;
 }
-
 .container{
-  background-color: #343434;
+  background-color: rgba(97, 183, 240, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  width: 38rem;
+  height: 26rem;
+}
+select{
+  background-color: rgb(42, 139, 70, 0.4);
+  align-self: flex-end;
+  margin: 1.5rem;
+  padding: 5px 15px; 
+  border: 1px solid rgb(214, 211, 211);
+  border-radius: 5px; 
+}
+
+.code-window{
+  background-color: rgba(103, 101, 101, 0.2);
   border-radius: 6px;
+  border: 1px solid rgb(213, 209, 209);
+  width: 28rem;
+  
 }
 
 #header{
-  background-color: #0f0f0f;
+  background-color: rgb(15, 15, 15, 0.2);
   height: 2rem;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -37,8 +64,8 @@ body{
 #aside{
   height: 11rem;
   padding: 1rem 0.5rem 0;
-  border-right: 1px solid rgb(150, 150, 150);
-  color: #05c7d8;
+  border-right: 1px solid rgb(176, 176, 176);
+  color: #14454a;
 }
 
 #output {
