@@ -7,9 +7,6 @@
 html{
   background-color: white;
 }
-html.dark{
-  background-color: rgb(75, 75, 75);
-}
 
 body{
   display: flex;
@@ -17,33 +14,34 @@ body{
   padding: 10px;
 }
 .container{
-  background-color: rgba(97, 183, 240, 0.4);
+  background-color: rgba(176, 215, 241, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1.5px solid rgb(174, 174, 174);
   border-radius: 5px;
   width: 38rem;
   height: 26rem;
 }
-select{
-  background-color: rgb(42, 139, 70, 0.4);
+#theme-selector{
+  background-color: rgba(201, 222, 207, 0.4);
   align-self: flex-end;
   margin: 1.5rem;
   padding: 5px 15px; 
-  border: 1px solid rgb(214, 211, 211);
+  font-size: 18px;
+  border: 1px solid rgb(69, 68, 68);
   border-radius: 5px; 
 }
 
 .code-window{
-  background-color: rgba(103, 101, 101, 0.2);
+  background-color: rgb(255, 255, 255);
   border-radius: 6px;
-  border: 1px solid rgb(213, 209, 209);
+  border: 1px solid rgb(77, 77, 77);
   width: 28rem;
-  
 }
 
 #header{
-  background-color: rgb(15, 15, 15, 0.2);
+  background-color: rgba(148, 148, 148, 0.2);
   height: 2rem;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -54,6 +52,7 @@ select{
 
   font-family: 'Anonymous Pro', sans-serif; 
   font-size: 18px;
+  font-weight: bold;
   line-height: 1.3;
   white-space: pre-line; 
   
@@ -65,7 +64,7 @@ select{
   height: 11rem;
   padding: 1rem 0.5rem 0;
   border-right: 1px solid rgb(176, 176, 176);
-  color: #14454a;
+  color: #1858b2;
 }
 
 #output {
@@ -87,3 +86,35 @@ select{
   margin-left: 30px;
 }
 
+/* Dark mode Styling*/
+
+html.dark{
+  background-color: rgb(58, 58, 58);
+}
+
+.container.dark{
+  background-color: rgb(13, 74, 114);
+}
+
+#theme-selector.dark{
+  background-color: rgb(14, 34, 19);
+  color: white;
+ 
+}
+#theme-selector option.dark{
+  background-color: rgb(24, 61, 33);
+  border: 1px solid rgb(87, 87, 87);
+}
+
+.code-window.dark{
+  background-color: rgb(43, 43, 43);
+  border: 1px solid rgb(208, 208, 208);
+}
+
+#header.dark{
+  background-color: rgba(22, 22, 22);
+}
+
+#aside.dark{
+  color: #d7f3f7;
+}
