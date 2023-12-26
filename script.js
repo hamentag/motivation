@@ -1,6 +1,5 @@
 // Data
-const text = `function getMotivation_(){\nstartCoding_()_;\ngetAwesome_()_;\n}\nif_(_feelings  ==  "lowMood"_)\ngetMotivation_()_;`
-const colorList= ['#117dd4', '#ffffff', '#ffff00', '#ffffff', ' #8812c7' ,'#ffffff','#ffffff',  '#8812c7' , '#ffffff', '#ffff00' ,'#117dd4', '#ffff00', '#ffffff', '#ffffff',' #ffa500',  '#ffff00',  '#ffffff', '#ffff00', '#ffffff'];
+const text = `function getMotivation(){\nstartCoding();\ngetAwesome();\n}\nif(feelings == "lowMood")\ngetMotivation();`
 
   // output:
   // function getMotivation(){
@@ -11,14 +10,11 @@ const colorList= ['#117dd4', '#ffffff', '#ffff00', '#ffffff', ' #8812c7' ,'#ffff
   //    getMotivation();
 
 // Function to display text letter by letter  
-function typeTextWithColors(element, text, speed) {
+function typeText(element, text, speed) {
   var lines = text.split('\n');
   let lineIndex = 0,
-      segmentIndex = 0,
       wordIndex = 0,
-      segmentLetterIndex = 0,
-      wordLetterIndex = 0,
-      colorIndex = 0;
+      letterIndex = 0; 
 
   function type() {
     // Get the current line
@@ -27,47 +23,31 @@ function typeTextWithColors(element, text, speed) {
     // Get the current text content
     let currentText = element.innerHTML;
 
-    // Split the line into segments
-    let segments = currentLine.split(/\s+/);
+    // Split the line into words
+    let words = currentLine.split(/\s+/);
+
 
     // Get the current segment
-    let currentSegment = segments[segmentIndex];
-
-    let words = currentSegment.split(/\_+/); 
-
     let curWord = words[wordIndex];
 
-    let sColor = colorList[colorIndex];
+    var letterEl = '<span>' + curWord[letterIndex] + '</span>';
+    // Add the letter to the text content
+    element.innerHTML = currentText + letterEl;
 
     // Move to the next letter
-    segmentLetterIndex++;
+    letterIndex++;
     
-    if(wordLetterIndex < curWord.length){
-       var coloredLetter = '<span style="color: ' + sColor + ';">' + curWord[wordLetterIndex] + '</span>';
-      // Add the colored letter to the text content
-      element.innerHTML = currentText + coloredLetter;
-      wordLetterIndex++;
-    }
-    else{
-      wordIndex++;
-      colorIndex++;
-      wordLetterIndex = 0;
-    }      
-  
     // Check if there are more letters in the current word
-    if (segmentLetterIndex < currentSegment.length) {
+    if (letterIndex < curWord.length) {
       // Call the function recursively after a delay
       setTimeout(type, speed);
     } else {
       // Move to the next word
-      segmentIndex++;
-      colorIndex++;
-      segmentLetterIndex = 0;
-      wordLetterIndex = 0;
-      wordIndex = 0;
+      letterIndex = 0;
+      wordIndex ++;
       
-      // Check if there are more segments in the current line
-      if (segmentIndex < segments.length) {
+      // Check if there are more words in the current line
+      if (wordIndex < words.length) {
         // Add a space between segments
         element.innerHTML += ' ';
         // Call the function recursively after a delay
@@ -75,7 +55,7 @@ function typeTextWithColors(element, text, speed) {
       } else {
         // Move to the next line
         lineIndex++;
-        segmentIndex = 0;
+        wordIndex = 0;
 
         // Check if there are more lines to type
         if (lineIndex < lines.length) {
@@ -83,6 +63,12 @@ function typeTextWithColors(element, text, speed) {
           element.innerHTML += '<br>';
           // Call the function recursively after a delay
           setTimeout(type, speed);
+        }
+        else{ // Type the text recursively after a 2s-delay 
+          setTimeout(function(){
+            motivationEl.innerHTML = '';
+            typeText(motivationEl, text, 50);
+          },2000);
         }
       }
     }
@@ -94,10 +80,6 @@ function typeTextWithColors(element, text, speed) {
 
 // Get the target element
 const motivationEl = document.getElementById('output');
-
-// Call the function to display text letter by letter
-typeTextWithColors(motivationEl, text, 50);
-
 
 ///////////////////////////  Dark/Light mode ///////////////////////////////////
 // Get the mode selector element
@@ -112,7 +94,7 @@ themeSelector.addEventListener('change', () => {
         getSystemTheme();
       }
       else{ // option = 'dark' or option = 'light'
-        setTheme(themeSelector.value)    
+        setTheme(themeSelector.value);    
       }
  }
 });
@@ -124,6 +106,8 @@ const htmlEl = document.querySelector('html');
 // for the html element according to the parameter
 function setTheme(theme){
     htmlEl.classList.toggle('dark', theme === 'dark')
+    
+    // theme = 'dark'? colors = [...colorList.dark] : colors = [...colorList.light]
 }
 
 // Check if the browser supports matchMedia
@@ -152,6 +136,10 @@ function getSystemTheme(){
         }
 }
 
-// Default to system
+// Default dark/light mode to system
 themeSelector.value = "system";
 getSystemTheme();
+
+
+// Call the function to display text letter by letter
+typeText(motivationEl, text, 50);
