@@ -14,25 +14,35 @@ body{
   padding: 10px;
 }
 .container{
-  background-color: rgba(176, 215, 241, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1.5px solid rgb(174, 174, 174);
   border-radius: 5px;
-  width: 38rem;
+  width: fit-content;
   height: 26rem;
 }
-#theme-selector{
-  background-color: rgba(201, 222, 207, 0.4);
-  align-self: flex-end;
-  margin: 1.5rem;
-  padding: 5px 15px; 
-  font-size: 18px;
-  border: 1px solid rgb(69, 68, 68);
-  border-radius: 5px; 
+.contrast{
+  background-color: rgba(171, 171, 171, 0.285);
+  width: fit-content;
+  display: flex;
+  padding: 5px 10px;
+  margin: 5px 0 10px 0;
+  margin-left: auto;
 }
-
+.contrast svg{
+  width: 24px;
+  height: 24px;
+}
+#theme-selector{
+  align-self: flex-end; 
+  font-size: 18px;
+  border: 1px solid rgba(69, 68, 68, 0);
+  border-radius: 5px; 
+  background-color: rgba(240, 255, 255, 0);
+}
+#theme-selector:focus {
+  outline: none;
+}
 .code-window{
   background-color: rgb(255, 255, 255);
   border-radius: 6px;
@@ -92,17 +102,20 @@ html.dark{
   background-color: rgb(58, 58, 58);
 }
 
-.container.dark{
-  background-color: rgb(13, 74, 114);
+.contrast.dark{
+  background-color: rgba(8, 15, 19, 0.731);
+}
+
+.contrast svg.dark{
+  fill: white;
 }
 
 #theme-selector.dark{
-  background-color: rgb(14, 34, 19);
+  background-color: rgba(14, 34, 19, 0);
   color: white;
- 
 }
 #theme-selector option.dark{
-  background-color: rgb(24, 61, 33);
+  background-color: rgb(62, 62, 62);
   border: 1px solid rgb(87, 87, 87);
 }
 
