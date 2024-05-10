@@ -8,7 +8,23 @@ html{
   background-color: white;
 }
 
-body{
+header{
+  width:100%; 
+  display: flex;
+}
+
+header a{
+  color: blue; 
+  font-size: 20px; 
+  text-decoration: none; 
+  width:fit-content; 
+  margin:15px auto; 
+  display: flex; 
+  gap: 5px; 
+  border-bottom: 1.5px solid gray;
+}
+
+main{
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -29,9 +45,9 @@ body{
   margin: 5px 0 10px 0;
   margin-left: auto;
 }
-.contrast svg{
-  width: 24px;
-  height: 24px;
+svg{
+  width: 20px;
+  height: 20px;
 }
 #theme-selector{
   align-self: flex-end; 
@@ -106,7 +122,11 @@ html.dark{
   background-color: rgba(8, 15, 19, 0.731);
 }
 
-.contrast svg.dark{
+
+header a.dark{
+  color: rgb(211, 211, 239);
+}
+svg.dark{
   fill: white;
 }
 
